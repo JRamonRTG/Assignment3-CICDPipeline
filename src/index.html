@@ -3,18 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WeatherApp - Assig 3 - metodos agiles</title>
+  <title>WeatherApp - CI/CD </title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Animated Background Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Weather Effects -->
+  <div class="weather-effect" id="weatherEffect"></div>
+
+  <!-- App -->
   <div class="app-container">
-    <h1>WeatherApp</h1>
-    <div class="search-box">
-      <input type="text" id="cityInput" placeholder="Ej. Guatemala City" />
-      <button onclick="getWeather()">Buscar</button>
+    <div class="header">
+      <h1>WeatherApp - CI/CD Assign3</h1>
+      <button class="toggle-mode" onclick="toggleMode()" aria-label="Toggle dark mode">🌙</button>
     </div>
+
+    <div class="search-box">
+      <div class="input-container">
+        <input 
+          type="text" 
+          id="cityInput" 
+          class="search-input"
+          placeholder="Buscar ciudad..." 
+          onkeypress="handleKeyPress(event)"
+        />
+      </div>
+      <button class="search-btn" onclick="getWeather()">
+        <span></span>
+        Buscar
+      </button>
+    </div>
+
     <div id="weatherCard" class="weather-card hidden"></div>
   </div>
-  <script src="script.js"></script>
+
+  <script src="app.js"></script>
+  
 </body>
 </html>
