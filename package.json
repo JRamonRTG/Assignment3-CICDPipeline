@@ -24,6 +24,7 @@
   "homepage": "https://github.com/JRamonRTG/Assignment3-CICDPipeline#readme",
   "description": "",
   "devDependencies": {
-    "eslint": "^9.32.0"
+    "eslint": "^9.32.0",
+    "jest": "^30.0.5"
   }
 }
