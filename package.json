@@ -9,8 +9,7 @@
     "lint": "eslint ./src",
     "test": "jest",
     "build": "echo 'building...'"
-  }
-  ,
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JRamonRTG/Assignment3-CICDPipeline.git"
@@ -22,5 +21,8 @@
     "url": "https://github.com/JRamonRTG/Assignment3-CICDPipeline/issues"
   },
   "homepage": "https://github.com/JRamonRTG/Assignment3-CICDPipeline#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.32.0"
+  }
 }
