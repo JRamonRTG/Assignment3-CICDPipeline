@@ -1,0 +1,55 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone del repositorio
+        uses: actions/checkout@v3
+
+      - name: config Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: install dependencias
+        run: npm ci
+
+      - name: Lint del codigo
+        run: npm run lint
+
+      - name: Ejecutar pruebas
+        run: npm test
+
+  deploy-staging:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: clone del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: install dependencias
+        run: npm ci
+
+      - name: Build fake
+        run: npm run build
+
+      - name: Desploy en Netlify
+        uses: nwtgck/actions-netlify@v1.1
+        with:
+          publish-dir: './src'
+          production-deploy: false
+          netlify-auth-token: ${{ secrets.NETLIFY_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
